@@ -1,7 +1,9 @@
-<html lang="ar" dir="rtl"><head>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>Wallet Dz - Admin</title>
+<title>Wallet Dz - لوحة التحكم الإدارية</title>
 
 <style>
 * {
@@ -14,7 +16,7 @@ html, body {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background: linear-gradient(135deg, #ffffff 0%, #f0f9f0 50%, #e6f7e6 100%);
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -31,22 +33,9 @@ html, body {
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  background: linear-gradient(135deg, #ffffff 0%, #f0f9f0 50%, #e6f7e6 100%);
-  color: #1a5c1a;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+  color: #e2e8f0;
   transition: opacity 0.8s ease;
-}
-
-#appFrame {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100vw;
-  height: 100dvh;
-  border: none;
-  opacity: 0;
-  transition: opacity 0.5s ease;
 }
 
 /* Logo Container */
@@ -71,7 +60,7 @@ html, body {
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  border: 4px solid rgba(34, 197, 94, 0.15);
+  border: 4px solid rgba(59, 130, 246, 0.15);
   animation: pulse 2s infinite ease-in-out;
 }
 
@@ -80,7 +69,7 @@ html, body {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  border: 3px solid rgba(34, 197, 94, 0.25);
+  border: 3px solid rgba(59, 130, 246, 0.25);
   top: 15px;
   left: 15px;
   animation: pulse 2s infinite ease-in-out reverse;
@@ -94,18 +83,18 @@ html, body {
   top: 25px;
   left: 25px;
   object-fit: cover;
-  box-shadow: 0 10px 30px rgba(34, 197, 94, 0.2);
-  border: 2px solid #ffffff;
+  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+  border: 2px solid #1e293b;
 }
 
 /* Loading Text */
 .loading-text {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 600;
   margin-bottom: 15px;
   text-align: center;
-  color: #166534;
-  text-shadow: 0 2px 10px rgba(34, 197, 94, 0.1);
+  color: #60a5fa;
+  text-shadow: 0 2px 10px rgba(59, 130, 246, 0.3);
 }
 
 .loading-subtext {
@@ -113,7 +102,7 @@ html, body {
   font-weight: 400;
   margin-bottom: 40px;
   text-align: center;
-  color: #4d7c0f;
+  color: #94a3b8;
   max-width: 300px;
 }
 
@@ -121,7 +110,7 @@ html, body {
 .progress-container {
   width: 280px;
   height: 8px;
-  background-color: rgba(34, 197, 94, 0.1);
+  background-color: rgba(59, 130, 246, 0.1);
   border-radius: 4px;
   overflow: hidden;
   margin-bottom: 30px;
@@ -130,7 +119,7 @@ html, body {
 .progress-bar {
   height: 100%;
   width: 0%;
-  background: linear-gradient(to right, #22c55e, #16a34a);
+  background: linear-gradient(to right, #3b82f6, #1d4ed8);
   border-radius: 4px;
   transition: width 0.3s ease;
 }
@@ -146,7 +135,7 @@ html, body {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color: #22c55e;
+  background-color: #3b82f6;
   margin: 0 5px;
   animation: bounce 1.5s infinite ease-in-out;
   opacity: 0.7;
@@ -160,17 +149,34 @@ html, body {
   animation-delay: 0.4s;
 }
 
+/* Admin Access Message */
+.admin-message {
+  background-color: rgba(30, 41, 59, 0.5);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 10px;
+  padding: 15px;
+  margin-top: 20px;
+  max-width: 400px;
+  text-align: center;
+  font-size: 14px;
+  color: #cbd5e1;
+}
+
+.admin-message strong {
+  color: #60a5fa;
+}
+
 /* Credits */
 .credits {
   position: absolute;
   bottom: 30px;
   text-align: center;
-  color: #65a30d;
+  color: #64748b;
   font-size: 14px;
 }
 
 .credits span {
-  color: #16a34a;
+  color: #3b82f6;
   font-weight: 600;
 }
 
@@ -244,14 +250,19 @@ html, body {
   .progress-container {
     width: 250px;
   }
+  
+  .admin-message {
+    max-width: 320px;
+    margin: 15px;
+  }
 }
 </style>
-<div id="uuidMachine">fd876415-7651-4d62-a9b7-c1920d1b72bf</div></head>
+</head>
 
 <body>
 
 <!-- Loading Screen -->
-<div id="loadingScreen" style="opacity: 0; display: none;">
+<div id="loadingScreen">
   <div class="logo-container">
     <div class="logo-wrapper">
       <div class="logo-circle"></div>
@@ -260,11 +271,11 @@ html, body {
     </div>
   </div>
   
-  <div class="loading-text" id="loadingMessage">Almost ready...</div>
-  <div class="loading-subtext" id="loadingSubmessage">Launching application...</div>
+  <div class="loading-text" id="loadingMessage">جاري تحميل لوحة التحكم الإدارية</div>
+  <div class="loading-subtext" id="loadingSubmessage">يتم الآن التحقق من الصلاحيات وجلب البيانات...</div>
   
   <div class="progress-container">
-    <div class="progress-bar" id="progressBar" style="width: 100%;"></div>
+    <div class="progress-bar" id="progressBar" style="width: 0%;"></div>
   </div>
   
   <div class="loading-dots">
@@ -273,38 +284,40 @@ html, body {
     <div class="dot"></div>
   </div>
   
+  <div class="admin-message">
+    <strong>ملاحظة:</strong> سيتم توجيهك إلى لوحة تحكم Wallet Dz. قد تحتاج إلى تسجيل الدخول بحساب مسؤول للوصول الكامل.
+  </div>
+  
   <div class="credits">
-    Powered by <span>Yanis Mesbahi</span>
+    نظام إدارة Wallet Dz | تم التطوير بواسطة <span>Yanis Mesbahi</span>
   </div>
 </div>
 
 <!-- App Frame (Hidden Initially) -->
-<iframe id="appFrame" src="https://walletdz-all-in-one.lovable.app/admin
-
-" style="opacity: 1;"></iframe>
+<iframe id="appFrame" src="" style="opacity: 0; position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 100vw; height: 100dvh; border: none;"></iframe>
 
 <script>
-// Encoded URL
-const encodedUrl = "aHR0cHM6Ly93YWxsZXRkei1hbGwtaW4tb25lLmxvdmFibGUuYXBw";
+// لوحة التحكم الإدارية - Admin Panel URL
+const adminUrl = "https://walletdz-all-in-one.lovable.app/admin";
 
-// Loading messages in English
+// رسائل التحميل باللغة العربية
 const loadingMessages = [
-  "Initializing Wallet Dz",
-  "Loading security modules",
-  "Connecting to services",
-  "Preparing your wallet",
-  "Almost ready..."
+  "جاري تحميل لوحة التحكم الإدارية",
+  "التحقق من أذونات الوصول",
+  "تحميل وحدات الأمان",
+  "الاتصال بخوادم النظام",
+  "جاري التهيئة النهائية..."
 ];
 
 const loadingSubmessages = [
-  "Preparing your digital wallet experience",
-  "Setting up secure encryption",
-  "Establishing secure connection",
-  "Configuring your personal wallet",
-  "Launching application..."
+  "يتم الآن التحقق من الصلاحيات وجلب البيانات...",
+  "مراجعة أذونات حساب المسؤول...",
+  "تحميل وحدات التشفير والحماية...",
+  "ربط النظام بقاعدة البيانات...",
+  "إعداد واجهة الإدارة وجلب الإحصائيات..."
 ];
 
-// Elements
+// العناصر
 const loadingScreen = document.getElementById('loadingScreen');
 const appFrame = document.getElementById('appFrame');
 const progressBar = document.getElementById('progressBar');
@@ -312,75 +325,73 @@ const loadingMessage = document.getElementById('loadingMessage');
 const loadingSubmessage = document.getElementById('loadingSubmessage');
 const logoImage = document.getElementById('logoImage');
 
-// Base64 decoder
-function decodeBase64(str) {
-  try {
-    // Modern approach
-    return decodeURIComponent(escape(atob(str.replace(/\s/g, ""))));
-  } catch (e) {
-    // Fallback for older browsers
-    const decoded = atob(str.replace(/\s/g, ""));
-    const bytes = new Uint8Array(decoded.length);
-    for (let i = 0; i < decoded.length; i++) {
-      bytes[i] = decoded.charCodeAt(i);
-    }
-    return new TextDecoder().decode(bytes);
-  }
-}
-
-// Simulate loading progress
+// محاكاة تقدم التحميل
 let progress = 0;
 let messageIndex = 0;
 const totalSteps = 5;
-const stepDuration = 800; // milliseconds
+const stepDuration = 700; // ميلي ثانية
 
 function updateProgress() {
   if (progress < 100) {
-    // Calculate increment based on remaining steps
+    // حساب الزيادة بناءً على الخطوات المتبقية
     const increment = (100 - progress) / (totalSteps - messageIndex);
     progress = Math.min(progress + increment, 100);
     progressBar.style.width = `${progress}%`;
     
-    // Update messages at certain progress points
+    // تحديث الرسائل عند نقاط تقدم معينة
     if (messageIndex < totalSteps - 1 && progress > (messageIndex + 1) * (100 / totalSteps)) {
       messageIndex++;
       loadingMessage.textContent = loadingMessages[messageIndex];
       loadingSubmessage.textContent = loadingSubmessages[messageIndex];
     }
     
-    // Schedule next update
+    // جدولة التحديث التالي
     setTimeout(updateProgress, stepDuration);
   } else {
-    // Loading complete - hide loading screen and show app
+    // اكتمال التحميل - إخفاء شاشة التحميل وعرض التطبيق
     loadingScreen.style.opacity = '0';
     
     setTimeout(() => {
       loadingScreen.style.display = 'none';
       
-      // Set the iframe source
-      const decodedUrl = decodeBase64(encodedUrl);
-      appFrame.src = decodedUrl;
+      // تعيين مصدر iframe إلى رابط لوحة التحكم
+      appFrame.src = adminUrl;
       
-      // Show iframe with fade in
+      // عرض iframe بتدرج
       setTimeout(() => {
         appFrame.style.opacity = '1';
       }, 100);
+      
+      // التحقق من حالة تحميل iframe
+      appFrame.onload = function() {
+        console.log("تم تحميل لوحة التحكم بنجاح");
+      };
+      
+      appFrame.onerror = function() {
+        // إذا فشل تحميل iframe، عرض رسالة خطأ
+        loadingScreen.style.display = 'flex';
+        loadingScreen.style.opacity = '1';
+        loadingMessage.textContent = "خطأ في الاتصال";
+        loadingSubmessage.textContent = "تعذر تحميل لوحة التحكم. قد يكون الرابط غير صحيح أو الصلاحيات غير كافية.";
+        progressBar.style.background = "#dc2626";
+      };
+      
     }, 800);
   }
 }
 
-// Start loading process when page loads
+// بدء عملية التحميل عند تحميل الصفحة
 window.addEventListener('load', () => {
-  // Initial message
+  // الرسالة الأولية
   loadingMessage.textContent = loadingMessages[0];
   loadingSubmessage.textContent = loadingSubmessages[0];
   
-  // Start progress after a short delay for visual effect
+  // بدء التقدم بعد تأخير قصير للتأثير البصري
   setTimeout(updateProgress, 500);
   
-  // Handle logo loading error
+  // التعامل مع خطأ تحميل الشعار
   logoImage.onerror = function() {
-    // If logo fails to load, use a placeholder with text
+    // إذا فشل تحميل الشعار، استخدم عنصر نصي بديل
     logoImage.style.display = 'none';
     const logoText = document.createElement('div');
     logoText.textContent = 'WD';
@@ -396,24 +407,12 @@ window.addEventListener('load', () => {
     logoText.style.fontSize = '40px';
     logoText.style.fontWeight = 'bold';
     logoText.style.color = '#ffffff';
-    logoText.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
-    logoText.style.boxShadow = '0 10px 30px rgba(34, 197, 94, 0.3)';
+    logoText.style.background = 'linear-gradient(135deg, #3b82f6, #1d4ed8)';
+    logoText.style.boxShadow = '0 10px 30px rgba(59, 130, 246, 0.3)';
     document.querySelector('.logo-wrapper').appendChild(logoText);
   };
 });
-
-// Handle iframe loading errors
-appFrame.addEventListener('error', () => {
-  // If iframe fails to load, show error message
-  loadingScreen.style.display = 'flex';
-  loadingScreen.style.opacity = '1';
-  loadingMessage.textContent = "Connection Error";
-  loadingSubmessage.textContent = "Unable to load the application. Please check your connection.";
-  progressBar.style.background = "#dc2626";
-});
 </script>
 
-
-
-
-</body></html>
+</body>
+</html>
